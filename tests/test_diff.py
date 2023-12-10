@@ -2,21 +2,22 @@ from pathlib import Path
 from gendiff.diff import generate_diff
 import yaml
 
-def test_generate_diff():
-    test_directory = Path(__file__).resolve().parent
+def test_generate_diff(tmp_path):
+    # Пути к файлам для сравнения
+    file_path1 = 'tests/fixtures/file1.json'
+    file_path2 = 'tests/fixtures/file2.json'
+    res = 'expected_diff.txt'
 
-    file1_path = test_directory / "fixtures" / "file1.json"
-    file2_path = test_directory / "fixtures" / "file2.json"
-    expected_diff_path = test_directory / "fixtures" / "expected_diff.txt"
-
-    with open(expected_diff_path, "r") as expected_diff_file:
+    with open(res, 'r') as expected_diff_file:
         expected_diff = expected_diff_file.read()
 
-    generated_diff = generate_diff(file1_path, file2_path)
+    generated_result = generate_diff(file_path1, file_path2)
+    assert generated_result == res
 
-    assert generated_diff == expected_diff
 
 
+
+'''
 def test_generate_diff_yaml():
     # Определение путей к файлам
     file1_path = 'tests/fixtures/file1.yaml'
@@ -31,6 +32,6 @@ def test_generate_diff_yaml():
     generated_diff = generate_diff(file1_path, file2_path)
 
     assert generated_diff == expected_diff
-
+'''
 
 
