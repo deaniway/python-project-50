@@ -28,13 +28,13 @@ def make_stylish_result(diff, spaces_count=2):
     lines = []
 
     for item in diff:
-        key_name = item.name
-        old_value = to_str(item.old_value, spaces_count)
-        new_value = to_str(item.new_value, spaces_count)
-        action = item.action
+        key_name = item['name']  # Изменяем обращение к ключу 'name'
+        old_value = to_str(item['old_value'], spaces_count)
+        new_value = to_str(item['new_value'], spaces_count)
+        action = item['action']
 
         if action == "unchanged":
-            current_value = to_str(item.new_value, spaces_count)  # обновлъм  атрибут
+            current_value = to_str(item['new_value'], spaces_count)
             lines.append(f"{indent}{NONE}{key_name}: {current_value}")
         elif action == "modified":
             lines.extend([
@@ -47,7 +47,7 @@ def make_stylish_result(diff, spaces_count=2):
             lines.append(f"{indent}{ADD}{key_name}: {new_value}")
         elif action == 'nested':
             children = make_stylish_result(
-                item.children, spaces_count + 4  # здесь получаем атрибут 'children'
+                item['children'], spaces_count + 4
             )
             lines.append(f"{indent}{NONE}{key_name}: {children}")
 

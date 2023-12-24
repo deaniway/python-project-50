@@ -20,5 +20,7 @@ diff_plain:
 	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml -f plain
 diff_json:
 	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml -f json
-test:
+check:
+	poetry run flake8 gendiff
+	poetry run flake8 tests
 	poetry run pytest

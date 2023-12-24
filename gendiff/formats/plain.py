@@ -1,3 +1,4 @@
+
 def to_str(value):
     if isinstance(value, (list, dict)):
         return '[complex value]'
@@ -10,13 +11,12 @@ def to_str(value):
     else:
         return str(value)
 
-
 def make_plain_result_item(item, path=''):
-    current_key = item.name
+    current_key = item['name']  # Обращаемся к ключу 'name'
     current_path = f"{path}.{current_key}" if path else current_key
-    action = item.action
-    new_value = to_str(item.new_value)
-    old_value = to_str(item.old_value)
+    action = item['action']  # Обращаемся к ключу 'action'
+    new_value = to_str(item['new_value'])  # Обращаемся к ключу 'new_value'
+    old_value = to_str(item['old_value'])  # Обращаемся к ключу 'old_value'
 
     if action == 'added':
         return f"Property '{current_path}' was added with value: {new_value}"
@@ -28,10 +28,9 @@ def make_plain_result_item(item, path=''):
             f"From {old_value} to {new_value}"
         )
     if action == 'nested':
-        children = item.children
+        children = item['children']  # Обращаемся к ключу 'children'
         return make_plain_result(children, current_path)
     return None
-
 
 def make_plain_result(diff, path=''):
     result = []
@@ -41,7 +40,6 @@ def make_plain_result(diff, path=''):
             result.append(formatted_item)
 
     return '\n'.join(result)
-
 
 def format_diff_plain(data):
     return make_plain_result(data)
