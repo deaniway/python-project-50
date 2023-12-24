@@ -25,5 +25,3 @@ def parser_data_file(file_path):
     form = file_format(file_path)
     content = file_content(file_path)
     return parser_data(content, form)
-
-
