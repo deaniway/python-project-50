@@ -1,35 +1,36 @@
-name: Python CI
+name: my_check
 
 on:
-  - push
-  - pull_request
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # we want to test our package on several versions of Python
         python-version: [3.11]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-        # make depends on poetry
       - name: Install dependencies
         run: |
           pip install poetry
           make install
+          pip install coverage
       - name: Run linter and pytest
         run: |
           make check
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        if: github.ref_name == 'main'
+
+      - name: Test and Report coverage
+        run: |
+          poetry run coverage run -m pytest
+          poetry run coverage lcov -o coverage/lcov.info
+      - name: Sending Reporter
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+          GITHUB_TOKEN: ${{ secrets.Coverage }}
+        run: |
+          ./cc-test-reporter after-build -r "$GITHUB_TOKEN" -t lcov
