@@ -14,13 +14,17 @@ def to_str(value, spaces_count=2):
 
         case dict_val if isinstance(dict_val, dict):
             indent = SEPARATOR * (spaces_count + 4)
-            lines = [f"{indent}{NONE}{key}: {to_str(inner_value, spaces_count + 4)}" for key, inner_value in value.items()]
+            lines = []
+            for key, inner_value in value.items():
+                formatted_value = to_str(inner_value, spaces_count + 4)
+                lines.append(f"{indent}{NONE}{key}: {formatted_value}")
             formatted_string = '\n'.join(lines)
             end_indent = SEPARATOR * (spaces_count + 2)
             return f"{{\n{formatted_string}\n{end_indent}}}"
 
         case _:
             return f"{value}"
+
 
 
 def make_stylish_result(diff, spaces_count=2):
