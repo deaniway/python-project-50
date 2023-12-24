@@ -16,7 +16,7 @@ def test_to_str(input_value, expected_value):
 
 @pytest.fixture
 def input_diff():
-    return get_input_data('result_result.json')
+    return get_input_data('input_diff.json')
 
 
 @pytest.fixture

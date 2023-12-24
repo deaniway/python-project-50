@@ -11,6 +11,7 @@ def to_str(value):
     else:
         return str(value)
 
+
 def make_plain_result_item(item, path=''):
     current_key = item['name']  # Обращаемся к ключу 'name'
     current_path = f"{path}.{current_key}" if path else current_key
@@ -31,6 +32,7 @@ def make_plain_result_item(item, path=''):
         children = item['children']  # Обращаемся к ключу 'children'
         return make_plain_result(children, current_path)
     return None
+
 
 def make_plain_result(diff, path=''):
     result = []

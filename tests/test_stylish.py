@@ -1,6 +1,6 @@
 import pytest
 from gendiff.formats.stylish import to_str, make_stylish_result
-from test_utils import get_input_data, get_expected_result
+from tests.test_utils import get_input_data, get_expected_result
 
 
 @pytest.mark.parametrize('input_value, expected_value', [
