@@ -7,10 +7,10 @@ def parser_data(content, formats):
     match formats:
         case 'json':
             return json.loads(content)
-        case 'yml', 'yaml':
+        case 'yml' | 'yaml':
             return yaml.safe_load(content)
-        #case default:
-            #raise ValueError(f"Формат не поддерживается: {formats}")
+        case default:
+            raise ValueError(f"Формат не поддерживается: {formats}")
 
 
 def parser_data_file(file_path):

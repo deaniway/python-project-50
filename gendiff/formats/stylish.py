@@ -5,30 +5,25 @@ NONE = '  '
 
 
 def to_str(value, spaces_count=2):
-    match value:
-        case None:
-            return "null"
-
-        case bool_val if isinstance(bool_val, bool):
-            return str(value).lower()
-
-        case dict_val if isinstance(dict_val, dict):
-            indent = SEPARATOR * (spaces_count + 4)
-            lines = []
-            for key, inner_value in value.items():
-                formatted_value = to_str(inner_value, spaces_count + 4)
-                lines.append(f"{indent}{NONE}{key}: {formatted_value}")
-            formatted_string = '\n'.join(lines)
-            end_indent = SEPARATOR * (spaces_count + 2)
-            return f"{{\n{formatted_string}\n{end_indent}}}"
-
-        case _:
-            return f"{value}"
+    if value is None:
+        return "null"
+    elif isinstance(value, bool):
+        return str(value).lower()
+    elif isinstance(value, dict):
+        indent = SEPARATOR * (spaces_count + 4)
+        lines = []
+        for key, inner_value in value.items():
+            formatted_value = to_str(inner_value, spaces_count + 4)
+            lines.append(f"{indent}{NONE}{key}: {formatted_value}")
+        formatted_string = '\n'.join(lines)
+        end_indent = SEPARATOR * (spaces_count + 2)
+        return f"{{\n{formatted_string}\n{end_indent}}}"
+    else:
+        return f"{value}"
 
 
+# обработка с пустым словарем был костыль)
 def make_stylish_result(diff, spaces_count=2):
-    if not diff:
-        return '{}'
 
     indent = SEPARATOR * spaces_count
     lines = []

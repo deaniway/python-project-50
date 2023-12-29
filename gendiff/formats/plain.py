@@ -1,5 +1,5 @@
 
-def to_str(value):
+def to_str(value):  # неправльное добавление изменение, вкидывает везде null
     if isinstance(value, (list, dict)):
         return '[complex value]'
     elif value is None:
@@ -13,34 +13,34 @@ def to_str(value):
 
 
 def make_plain_result_item(item, path=''):
-    current_key = item['name']  # Обращаемся к ключу 'name'
+    current_key = item['key']
     current_path = f"{path}.{current_key}" if path else current_key
-    action = item['action']  # Обращаемся к ключу 'action'
-    new_value = to_str(item['new_value'])  # Обращаемся к ключу 'new_value'
-    old_value = to_str(item['old_value'])  # Обращаемся к ключу 'old_value'
+    action = item['type']
+    new_value = to_str(item.get('new_value'))
+    old_value = to_str(item.get('old_value'))
 
-    if action == 'added':
-        return f"Property '{current_path}' was added with value: {new_value}"
-    if action == 'deleted':
-        return f"Property '{current_path}' was removed"
-    if action == 'modified':
-        return (
-            f"Property '{current_path}' was updated. "
-            f"From {old_value} to {new_value}"
-        )
-    if action == 'nested':
-        children = item['children']  # Обращаемся к ключу 'children'
-        return make_plain_result(children, current_path)
-    return None
+    match action:
+        case 'added':
+            return f"Property '{current_path}' was added with value: {new_value}"
+        case 'deleted':
+            return f"Property '{current_path}' was removed"
+        case 'modified':
+            return (
+                f"Property '{current_path}' was updated. "
+                f"From {old_value} to {new_value}"
+            )
+        case 'nested':
+            children = item['children']
+            return make_plain_result(children, current_path)
+        case default:
+            raise ValueError(f"Не поддерживаемый формат ноды.")
+# давай временно оставим все исключения на русском
+# исправлений много меня ждет, проще глазами отследить косяк
+# ближе к середине финиша исправим lang)
 
 
 def make_plain_result(diff, path=''):
-    result = []
-    for item in diff:
-        formatted_item = make_plain_result_item(item, path)
-        if formatted_item is not None:
-            result.append(formatted_item)
-
+    result = filter(None, map(lambda item: make_plain_result_item(item, path), diff))
     return '\n'.join(result)
 
 
