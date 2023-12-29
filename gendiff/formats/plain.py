@@ -37,13 +37,8 @@ def make_plain_result_item(item, path=''):
 
 
 def make_plain_result(diff, path=''):
-    result = []
-    for item in diff:
-        formatted_item = make_plain_result_item(item, path)
-        if formatted_item is not None:
-            result.append(formatted_item)
-
-    return '\n'.join(result)
+    result = map(lambda item: make_plain_result_item(item, path), diff)
+    return '\n'.join(filter(None, result))
 
 
 def format_diff_plain(data):
