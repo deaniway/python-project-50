@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b160d11-6c38-440e-9bfa-d7c4b16881a8" name="Changes" comment="" />
+    <list default="true" id="6b160d11-6c38-440e-9bfa-d7c4b16881a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/exp_json.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/exp_plain.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/exp_stylish.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/file1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/file1.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/file2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/file2.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/file3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/input_diff.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/result_parse_f1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/result_parse_f2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_plain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_stylish.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/formats/plain.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/plain.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +59,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -50,7 +71,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.lint">
+  <component name="RunManager" selected="Makefile Target.diff_plain">
     <configuration name="diff" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="diff" workingDirectory="" arguments="">
         <envs />
@@ -83,10 +104,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.lint" />
-        <item itemvalue="Makefile Target.install" />
         <item itemvalue="Makefile Target.diff_plain" />
         <item itemvalue="Makefile Target.diff" />
+        <item itemvalue="Makefile Target.lint" />
+        <item itemvalue="Makefile Target.install" />
         <item itemvalue="Makefile Target.diff_json" />
       </list>
     </recent_temporary>
