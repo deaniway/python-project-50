@@ -1,27 +1,19 @@
 import yaml
 import json
-import os
+from gendiff.utilits import get_file_format, get_file_content
 
 
-def file_format(file_path):
-    ignore_name, txt = os.path.splitext(file_path)
-    return txt[1:]
-
-
-def file_content(file_path):
-    with open(file_path) as f:
-        return f.read()
-
-
-def parser_data(content, form):
-    if form == 'json':
-        return json.loads(content)
-    if form in ['yml', 'yaml']:
-        return yaml.safe_load(content)
-    raise ValueError(f"Формат не поддерживается: {form}")
+def parser_data(content, formats):
+    match formats:
+        case 'json':
+            return json.loads(content)
+        case 'yml', 'yaml':
+            return yaml.safe_load(content)
+        #case default:
+            #raise ValueError(f"Формат не поддерживается: {formats}")
 
 
 def parser_data_file(file_path):
-    form = file_format(file_path)
-    content = file_content(file_path)
-    return parser_data(content, form)
+    formats = get_file_format(file_path)
+    content = get_file_content(file_path)
+    return parser_data(content, formats)

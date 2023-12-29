@@ -10,6 +10,6 @@ def parse_args():
     parser.add_argument(
         '-f', '--format',
         help='set format of output',
-        default='stylish', type=str
+        default='stylish'
     )
     return parser.parse_args()

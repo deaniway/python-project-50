@@ -26,7 +26,6 @@ def to_str(value, spaces_count=2):
             return f"{value}"
 
 
-
 def make_stylish_result(diff, spaces_count=2):
     if not diff:
         return '{}'
@@ -35,12 +34,12 @@ def make_stylish_result(diff, spaces_count=2):
     lines = []
 
     for item in diff:
-        key_name = item['name']
-        action = item['action']
+        key_name = item['key']
+        action = item['type']
 
         match action:
             case "unchanged":
-                current_value = to_str(item['new_value'], spaces_count)
+                current_value = to_str(item['value'], spaces_count)
                 lines.append(f"{indent}{NONE}{key_name}: {current_value}")
 
             case "modified":
@@ -52,11 +51,11 @@ def make_stylish_result(diff, spaces_count=2):
                 ])
 
             case "deleted":
-                old_value = to_str(item['old_value'], spaces_count)
+                old_value = to_str(item['value'], spaces_count)
                 lines.append(f"{indent}{DELETE}{key_name}: {old_value}")
 
             case "added":
-                new_value = to_str(item['new_value'], spaces_count)
+                new_value = to_str(item['value'], spaces_count)
                 lines.append(f"{indent}{ADD}{key_name}: {new_value}")
 
             case "nested":
