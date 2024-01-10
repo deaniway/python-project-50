@@ -11,35 +11,34 @@ def to_str(value):  # неправльное добавление изменен
         return str(value)
 
 
-def make_plain_result_item(item, path=''):
-    current_key = item['key']
-    current_path = f"{path}.{current_key}" if path else current_key
-    action = item['type']
-    new_value = to_str(item.get('new_value'))
-    old_value = to_str(item.get('old_value'))
-
-    match action:
-        case 'added':
-            return f"Property '{current_path}' was added with value: {new_value}"
-        case 'deleted':
-            return f"Property '{current_path}' was removed"
-        case 'modified':
-            return (
-                f"Property '{current_path}' was updated. "
-                f"From {old_value} to {new_value}"
-            )
-        case 'nested':
-            children = item.get('children')
-            if children is not None:
-                return make_plain_result(children, current_path)
-            else:
-                raise ValueError("Не поддерживается формат ноды")
-
-
 def make_plain_result(diff, path=''):
-    result = map(lambda item: make_plain_result_item(item, path), diff)
+    def _iter_plain(item, path=''):
+        current_key = item['key']
+        current_path = f"{path}.{current_key}" if path else current_key
+        action = item['type']
+        new_value = to_str(item.get('new_value'))
+        old_value = to_str(item.get('old_value'))
+
+        match action:
+            case 'added':
+                return f"Property '{current_path}' was added with value: {new_value}"
+            case 'deleted':
+                return f"Property '{current_path}' was removed"
+            case 'modified':
+                return (
+                    f"Property '{current_path}' was updated. "
+                    f"From {old_value} to {new_value}"
+                )
+            case 'nested':
+                children = item.get('children')
+                if children is not None:
+                    return make_plain_result(children, current_path)
+                else:
+                    raise ValueError("Не поддерживается формат ноды")
+
+    result = map(lambda item: _iter_plain(item, path), diff)
     return '\n'.join(filter(None, result))
 
 
-def format_diff_plain(data):
-    return make_plain_result(data)
+def format_diff_plain(value):
+    return make_plain_result(value)
