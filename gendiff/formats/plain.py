@@ -36,12 +36,6 @@ def make_plain_result(diff):
                 case 'nested':
                     children = data['children']
                     res.extend(_iter(children, current_path))
-                case _:
-                    res.append(
-                        f"Unknown type '{data['type']}'"
-                        f" for property '{current_path}'"
-                    )
-
         return res
 
     return '\n'.join(_iter(diff))

@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9f3d69-2449-497f-aaa1-03f182c08173" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/diff_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/diff_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/formats/stylish.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/stylish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/generate_diff.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/generate_diff.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/utilits.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/utilits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_json.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_gendiff.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_gendiff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/formats/plain.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/plain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_plain.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
