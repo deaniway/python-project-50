@@ -1,7 +1,7 @@
+
 SEPARATOR = " "
 ADD = '+ '
 DELETE = '- '
-NONE = '  '
 
 
 def to_str(value, spaces_count=2):
@@ -14,7 +14,7 @@ def to_str(value, spaces_count=2):
         lines = []
         for key, inner_value in value.items():
             formatted_value = to_str(inner_value, spaces_count + 4)
-            lines.append(f"{indent}{NONE}{key}: {formatted_value}")
+            lines.append(f"{indent}  {key}: {formatted_value}")
         formatted_string = '\n'.join(lines)
         end_indent = SEPARATOR * (spaces_count + 2)
         return f"{{\n{formatted_string}\n{end_indent}}}"
@@ -22,46 +22,40 @@ def to_str(value, spaces_count=2):
         return f"{value}"
 
 
-# обработка с пустым словарем был костыль)
 def make_stylish_result(diff, spaces_count=2):
-
-    indent = SEPARATOR * spaces_count
     lines = []
 
-    for item in diff:
-        key_name = item['key']
+    for key, item in diff.items():
+        key_name = key
         action = item['type']
+        indent = ' ' * spaces_count
 
-        match action:
-            case "unchanged":
-                current_value = to_str(item['value'], spaces_count)
-                lines.append(f"{indent}{NONE}{key_name}: {current_value}")
+        if action == "unchanged":
+            current_value = to_str(item.get('value'), spaces_count)
+            lines.append(f"{indent}  {key_name}: {current_value}")
 
-            case "modified":
-                old_value = to_str(item['old_value'], spaces_count)
-                new_value = to_str(item['new_value'], spaces_count)
-                lines.extend([
-                    f"{indent}{DELETE}{key_name}: {old_value}",
-                    f"{indent}{ADD}{key_name}: {new_value}"
-                ])
+        elif action == "modified":
+            old_value = to_str(item.get('old_value'), spaces_count)
+            new_value = to_str(item.get('new_value'), spaces_count)
+            lines.extend([
+                f"{indent}- {key_name}: {old_value}",
+                f"{indent}+ {key_name}: {new_value}"
+            ])
 
-            case "deleted":
-                old_value = to_str(item['value'], spaces_count)
-                lines.append(f"{indent}{DELETE}{key_name}: {old_value}")
+        elif action in ["deleted", "added"]:
+            value = to_str(item.get('value'), spaces_count)
+            sign = '-' if action == "deleted" else '+'
+            lines.append(f"{indent}{sign} {key_name}: {value}")
 
-            case "added":
-                new_value = to_str(item['value'], spaces_count)
-                lines.append(f"{indent}{ADD}{key_name}: {new_value}")
+        elif action == "nested":
+            children = make_stylish_result(
+                item.get('children', {}),
+                spaces_count + 4
+            )
 
-            case "nested":
-                children = make_stylish_result(item['children'], spaces_count + 4)
-                lines.append(f"{indent}{NONE}{key_name}: {children}")
+            lines.append(f"{indent}  {key_name}: {children}")
 
     formatted_string = '\n'.join(lines)
-    end_indent = SEPARATOR * (spaces_count - 2)
+    end_indent = ' ' * (spaces_count - 2)
 
     return f"{{\n{formatted_string}\n{end_indent}}}"
-
-
-def format_diff_stylish(data):
-    return make_stylish_result(data)

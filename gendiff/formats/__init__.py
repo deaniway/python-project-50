@@ -1,15 +1,15 @@
-from gendiff.formats.json import format_diff_json
-from gendiff.formats.plain import format_diff_plain
-from gendiff.formats.stylish import format_diff_stylish
+from gendiff.formats.json import make_json_result
+from gendiff.formats.plain import make_plain_result
+from gendiff.formats.stylish import make_stylish_result
 
 
 def format_diff(diff, formatter):
     match formatter:
         case 'stylish':
-            return format_diff_stylish(diff)
+            return make_stylish_result(diff)
         case 'plain':
-            return format_diff_plain(diff)
+            return make_plain_result(diff)
         case 'json':
-            return format_diff_json(diff)
+            return make_json_result(diff)
         case _:
             raise ValueError(f"Unsupported formatter: {formatter}")

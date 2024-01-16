@@ -1,8 +1,8 @@
-def to_str(value):  # неправльное добавление изменение, вкидывает везде null
-    if isinstance(value, (list, dict)):
-        return '[complex value]'
-    elif value is None:
+def to_str(value):
+    if value is None:
         return 'null'
+    elif isinstance(value, (list, dict)):
+        return '[complex value]'
     elif isinstance(value, bool):
         return str(value).lower()
     elif isinstance(value, str):
@@ -11,34 +11,37 @@ def to_str(value):  # неправльное добавление изменен
         return str(value)
 
 
-def make_plain_result(diff, path=''):
-    def _iter_plain(item, path=''):
-        current_key = item['key']
-        current_path = f"{path}.{current_key}" if path else current_key
-        action = item['type']
-        new_value = to_str(item.get('new_value'))
-        old_value = to_str(item.get('old_value'))
+def make_plain_result(diff):
+    def _iter(diff, path=''):
+        res = []
+        for key, data in diff.items():
+            current_path = f'{path}.{key}' if path else key
+            match data['type']:
 
-        match action:
-            case 'added':
-                return f"Property '{current_path}' was added with value: {new_value}"
-            case 'deleted':
-                return f"Property '{current_path}' was removed"
-            case 'modified':
-                return (
-                    f"Property '{current_path}' was updated. "
-                    f"From {old_value} to {new_value}"
-                )
-            case 'nested':
-                children = item.get('children')
-                if children is not None:
-                    return make_plain_result(children, current_path)
-                else:
-                    raise ValueError("Не поддерживается формат ноды")
+                case 'added':
+                    value = to_str(data['value'])
+                    res.append(
+                        f"Property '{current_path}' "
+                        f"was added with value: {value}"
+                    )
+                case 'deleted':
+                    res.append(f"Property '{current_path}' was removed")
+                case 'modified':
+                    new_value = to_str(data['new_value'])
+                    old_value = to_str(data['old_value'])
+                    res.append(
+                        f"Property '{current_path}' was updated. "
+                        f"From {old_value} to {new_value}"
+                    )
+                case 'nested':
+                    children = data['children']
+                    res.extend(_iter(children, current_path))
+                case _:
+                    res.append(
+                        f"Unknown type '{data['type']}'"
+                        f" for property '{current_path}'"
+                    )
 
-    result = map(lambda item: _iter_plain(item, path), diff)
-    return '\n'.join(filter(None, result))
+        return res
 
-
-def format_diff_plain(value):
-    return make_plain_result(value)
+    return '\n'.join(_iter(diff))

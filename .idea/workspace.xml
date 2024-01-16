@@ -5,18 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9f3d69-2449-497f-aaa1-03f182c08173" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/gendiff/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/cli.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/fixtures/result_json.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_gendiff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/diff_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/diff_builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/formats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/formats/json.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/json.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/formats/plain.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/plain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/generate_diff.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/generate_diff.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/formats/stylish.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/stylish.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/utilits.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/utilits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_json.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_plain.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_stylish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/file3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/input_diff.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_parse_f1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_parse_f2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_json.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_plain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_stylish.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,33 +48,39 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2aknQkDdlhcKyhwykM1pTOyb2mT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/way/python-project-50",
-    "settings.editor.selected.configurable": "terminal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/way/python-project-50&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.plain">
-    <configuration name="diff" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="diff" workingDirectory="" arguments="">
+}</component>
+  <component name="RunManager" selected="Makefile Target.check">
+    <configuration name="build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="build" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="diff_plain" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="diff_plain" workingDirectory="" arguments="">
+    <configuration name="check" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="check" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="diff" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="diff" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -61,40 +91,19 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="install" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="install" workingDirectory="" arguments="">
+    <configuration name="publish" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="publish" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="plain" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="python-project-50" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gendiff/formats" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gendiff/formats/plain.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.plain" />
-        <item itemvalue="Makefile Target.diff_plain" />
+        <item itemvalue="Makefile Target.check" />
         <item itemvalue="Makefile Target.diff" />
+        <item itemvalue="Makefile Target.publish" />
+        <item itemvalue="Makefile Target.build" />
         <item itemvalue="Makefile Target.gendiff" />
-        <item itemvalue="Makefile Target.install" />
       </list>
     </recent_temporary>
   </component>

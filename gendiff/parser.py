@@ -10,6 +10,3 @@ def parser_data(content, format_file):
             return yaml.safe_load(content)
         case _:
             raise ValueError(f"Формат не поддерживается: {format_file}")
-
-
-

@@ -9,9 +9,9 @@ def get_fixture_path(file_name):
 
 json1 = get_fixture_path('file1.json')
 json2 = get_fixture_path('file2.json')
-res_stylish = get_fixture_path('exp_stylish.txt')
-res_plain = get_fixture_path('exp_plain.txt')
-res_json = get_fixture_path('exp_json.txt')
+res_stylish = get_fixture_path('result_stylish.txt')
+res_plain = get_fixture_path('result_plain.txt')
+res_json = get_fixture_path('result_json.txt')
 yaml1 = get_fixture_path('file1.yml')
 yaml2 = get_fixture_path('file2.yml')
 

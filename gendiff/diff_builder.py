@@ -5,15 +5,31 @@ def generate_diff_element(action, key, new_value=None,
     try:
         match action:
             case 'added':
-                diff.update({'type': 'added', 'value': new_value})
+                diff.update({
+                    'type': 'added',
+                    'value': new_value
+                })
             case 'deleted':
-                diff.update({'type': 'deleted', 'value': old_value})
+                diff.update({
+                    'type': 'deleted',
+                    'value': old_value
+                })
             case 'modified':
-                diff.update({'type': 'modified', 'new_value': new_value, 'old_value': old_value})
+                diff.update({
+                    'type': 'modified',
+                    'new_value': new_value,
+                    'old_value': old_value
+                })
             case 'nested':
-                diff.update({'type': 'nested', 'children': children})
+                diff.update({
+                    'type': 'nested',
+                    'children': children
+                })
             case _:
-                diff.update({'type': 'unchanged', 'value': old_value})
+                diff.update({
+                    'type': 'unchanged',
+                    'value': old_value
+                })
     except Exception as e:
         print(f'Error when generating element:{e}')
 
@@ -21,39 +37,44 @@ def generate_diff_element(action, key, new_value=None,
 
 
 def generate(data1, data2):
-    diff = []
+    diff = {}
 
-    try:
-        keys = sorted(data1.keys() | data2.keys())
+    keys = sorted(data1.keys() | data2.keys())
 
-        for key in keys:
-            value1 = data1.get(key)
-            value2 = data2.get(key)
+    for key in keys:
+        value1 = data1.get(key)
+        value2 = data2.get(key)
 
-            try:
-                if key not in data1:
-                    diff.append(generate_diff_element('added', key, new_value=value2))
+        if key not in data1:
+            diff[key] = {
+                'type': 'added',
+                'value': data2[key]
+            }
 
-                elif key not in data2:
-                    diff.append(generate_diff_element('deleted', key, old_value=value1))
+        elif key not in data2:
+            diff[key] = {
+                'type': 'deleted',
+                'value': data1[key]
+            }
 
-                elif isinstance(value1, dict) and isinstance(value2, dict):
-                    diff.append(
-                        generate_diff_element('nested', key, children=generate(value1, value2))
-                    )
+        elif isinstance(value1, dict) and isinstance(value2, dict):
+            diff[key] = {
+                'type': 'nested',
+                'children': generate(data1[key], data2[key])
+            }
 
-                elif value1 != value2:
-                    diff.append(
-                        generate_diff_element('modified', key, new_value=value2, old_value=value1)
-                    )
+        elif data1[key] != data2[key]:
+            diff[key] = {
+                'type': 'modified',
+                'old_value': data1[key],
+                'new_value': data2[key]
+            }
 
-                else:
-                    diff.append(
-                        generate_diff_element('unchanged', key, new_value=value1, old_value=value1)
-                    )
-            except Exception as e:
-                print(f"Error generating difference: {e}")
-    except Exception as e:
-        print(f"Error generating difference: {e}")
+        else:
+            diff[key] = {
+                'type': 'unchanged',
+                'old_value': data1[key],
+                'new_value': data2[key]
+            }
 
     return diff
