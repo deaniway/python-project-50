@@ -70,8 +70,7 @@ To run the utility in development mode, run the command: ` make <name diff build
 ## In the plans
 - [x] Submit README
 - [ ] Add functionality to the project
-- [x] Thank the mentor for the help and work done with me)
-- [x] Feed the cat, while I was doing the project, I forgot about its existence
+
 
 
 ## Project team
