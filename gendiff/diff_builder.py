@@ -73,6 +73,7 @@ def generate(data1, data2):
         else:
             diff[key] = {
                 'type': 'unchanged',
+                'value': data1[key],
                 'old_value': data1[key],
                 'new_value': data2[key]
             }

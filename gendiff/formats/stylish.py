@@ -31,7 +31,7 @@ def make_stylish_result(diff, spaces_count=2):
         indent = ' ' * spaces_count
 
         if action == "unchanged":
-            current_value = to_str(item.get('value'), spaces_count)
+            current_value = to_str(item['value'], spaces_count)
             lines.append(f"{indent}  {key_name}: {current_value}")
 
         elif action == "modified":

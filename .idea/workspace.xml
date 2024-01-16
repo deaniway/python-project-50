@@ -5,30 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e9f3d69-2449-497f-aaa1-03f182c08173" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/fixtures/result_json.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_gendiff.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/diff_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/diff_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/formats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/formats/json.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/formats/plain.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/plain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/formats/stylish.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/formats/stylish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gendiff/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gendiff/generate_diff.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/generate_diff.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gendiff/utilits.py" beforeDir="false" afterPath="$PROJECT_DIR$/gendiff/utilits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_json.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_plain.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_plain.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/exp_stylish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/file3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/input_diff.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_parse_f1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_parse_f2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_plain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_stylish.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_json.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/fixtures/result_stylish.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_gendiff.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_gendiff.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +42,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/way/python-project-50&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/way/python-project-50",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Makefile Target.check">
-    <configuration name="build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="build" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
     <configuration name="check" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="check" workingDirectory="" arguments="">
         <envs />
@@ -85,14 +64,20 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="gendiff" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="gendiff" workingDirectory="" arguments="">
+    <configuration name="diff_json" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="diff_json" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="publish" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="publish" workingDirectory="" arguments="">
+    <configuration name="diff_plain" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="diff_plain" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="test" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -100,10 +85,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile Target.check" />
+        <item itemvalue="Makefile Target.diff_json" />
+        <item itemvalue="Makefile Target.diff_plain" />
         <item itemvalue="Makefile Target.diff" />
-        <item itemvalue="Makefile Target.publish" />
-        <item itemvalue="Makefile Target.build" />
-        <item itemvalue="Makefile Target.gendiff" />
+        <item itemvalue="Makefile Target.test" />
       </list>
     </recent_temporary>
   </component>
