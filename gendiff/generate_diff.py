@@ -5,18 +5,17 @@ import os
 
 
 def get_file_format(file_path):
-    ignore_name, txt = os.path.splitext(file_path)
-    return txt[1:]
-
-
-def get_file_content(file_path):
-    with open(file_path) as f:
-        return f.read()
+    _, ignore_name = os.path.splitext(file_path)
+    return ignore_name[1:]
 
 
 def parser_data_file(file_path):
-    format_file = get_file_format(file_path)
-    content = get_file_content(file_path)
+    _, file_name = os.path.splitext(file_path)
+    format_file = file_name[1:]
+
+    with open(file_path) as f:
+        content = f.read()
+
     return parser_data(content, format_file)
 
 

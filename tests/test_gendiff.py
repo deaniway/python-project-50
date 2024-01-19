@@ -36,27 +36,29 @@ import os
 
 
 def get_fixture_path(file_name):
-    return os.path.join(os.path.dirname(__file__), 'fixtures', file_name)
+    current_dir = os.path.dirname(__file__)
+    return os.path.join(current_dir, 'fixtures', file_name)
 
 
-json1 = get_fixture_path('file1.json')
-json2 = get_fixture_path('file2.json')
-yaml1 = get_fixture_path('file1.yml')
-yaml2 = get_fixture_path('file2.yml')
-
-
-@pytest.mark.parametrize("path1, path2, style, expected", [
-    (json1, json2, 'stylish', 'result_stylish.txt'),
-    (yaml1, yaml2, 'stylish', 'result_stylish.txt'),
-    (json1, json2, 'plain', 'result_plain.txt'),
-    (yaml1, yaml2, 'plain', 'result_plain.txt'),
-    (json1, json2, 'json', 'result_json.txt'),
-    (yaml1, yaml2, 'json', 'result_json.txt')
+@pytest.mark.parametrize("file1, file2", [
+    ('file1.json', 'file2.json'),
+    ('file1.yml', 'file2.yml')
 ])
-def test_generate_diff(path1, path2, style, expected):
-    expected_result = get_fixture_path(expected)
-    with open(expected_result, "r") as correct:
-        result = generate_diff(path1, path2, style)
-        assert result == correct.read()
-        assert isinstance(result, str)  # результат является строкой
-        assert len(result) > 0  # результат не пустой строкой
+def test_generate_diff(file1, file2):
+    path1 = get_fixture_path(file1)
+    path2 = get_fixture_path(file2)
+
+    expected_stylish = get_fixture_path('result_stylish.txt')
+    result_stylish = generate_diff(path1, path2, 'stylish')
+    with open(expected_stylish, "r") as correct:
+        assert result_stylish == correct.read()
+
+    expected_plain = get_fixture_path('result_plain.txt')
+    result_plain = generate_diff(path1, path2, 'plain')
+    with open(expected_plain, "r") as correct:
+        assert result_plain == correct.read()
+
+    expected_json = get_fixture_path('result_json.txt')
+    result_json = generate_diff(path1, path2, 'json')
+    with open(expected_json, "r") as correct:
+        assert result_json == correct.read()

@@ -17,7 +17,6 @@ def make_plain_result(diff):
         for key, data in diff.items():
             current_path = f'{path}.{key}' if path else key
             match data['type']:
-
                 case 'added':
                     value = to_str(data['value'])
                     res.append(
@@ -34,8 +33,13 @@ def make_plain_result(diff):
                         f"From {old_value} to {new_value}"
                     )
                 case 'nested':
-                    children = data['children']
-                    res.extend(_iter(children, current_path))
+                    try:
+                        children = data['children']
+                        res.extend(_iter(children, current_path))
+                    except Exception as e:
+                        raise ValueError(f"Unsupported node type"
+                                         f" 'nested' at {current_path}: {e}")
+
         return res
 
     return '\n'.join(_iter(diff))

@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/deaniway/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/deaniway/python-project-50/actions)
+[![Github CI](https://github.com/hexlet-boilerplates/python-package/workflows/Python%20CI/badge.svg)](https://github.com/deaniway/python-project-50/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/77d97412b5a1275a9fe6/maintainability)](https://codeclimate.com/github/deaniway/python-project-50/maintainability)
 ### Links
 
@@ -32,21 +33,14 @@ A similar mechanism is, for example, used when outputting tests or automatically
 
 ### To get started, you need to perform the following operations:
 
-| Step |                                   Instruction                                   |
-|:----:|:-------------------------------------------------------------------------------:|
-|  1   | Clone he repository to your PC:<br/>`github.com/deaniway/python-project-50.git` |
-|  2   |                   Go to repository<br/>`cd python-project-50`                   |
-|  3   |                 Installation game in your PC<br/>`make install`                 | 
+| Step |                                                Instruction                                                 |
+|:----:|:----------------------------------------------------------------------------------------------------------:|
+|  1   |              Clone he repository to your PC:<br/>`github.com/deaniway/python-project-50.git`               |
+|  2   |                                Go to repository<br/>`cd python-project-50`                                 |
+|  3   |                              Installation game in your PC<br/>`make install`                               | 
+|  4   | Use command for install <br/>`python3 -m pip install --user git+github.com/deaniway/python-project-50.git` | 
 
 *P.S.* *You must have [Poetry](https://python-poetry.org) installed*
-
-### For developers
-
-| № |      Command       | 
-|:-:|:------------------:| 
-| 1 |    ` make diff`    |
-| 2 | ` make diff_plain` |
-| 3 | ` make diff_json`  |
 
 
 
@@ -58,7 +52,7 @@ How can I help develop a project? Submit a pull request :)
 # How it's work
 To install the package, run the command: ` make package-install`
 
-To run the utility in development mode, run the command: ` make <name diff build>`
+To run the utility in development mode, run the command: ` gendiff <file_name_1> <file_name_2>  -f <stylish/plain/json>`
 
 ### Diff-stylish
 [![asciicast](https://asciinema.org/a/OnM7fSr3UTgAAj0o2vWYMUsya.svg)](https://asciinema.org/a/OnM7fSr3UTgAAj0o2vWYMUsya)

@@ -1,41 +1,3 @@
-def generate_diff_element(action, key, new_value=None,
-                          old_value=None, children=None):
-    diff = {'key': key}
-
-    try:
-        match action:
-            case 'added':
-                diff.update({
-                    'type': 'added',
-                    'value': new_value
-                })
-            case 'deleted':
-                diff.update({
-                    'type': 'deleted',
-                    'value': old_value
-                })
-            case 'modified':
-                diff.update({
-                    'type': 'modified',
-                    'new_value': new_value,
-                    'old_value': old_value
-                })
-            case 'nested':
-                diff.update({
-                    'type': 'nested',
-                    'children': children
-                })
-            case _:
-                diff.update({
-                    'type': 'unchanged',
-                    'value': old_value
-                })
-    except Exception as e:
-        print(f'Error when generating element:{e}')
-
-    return diff
-
-
 def generate(data1, data2):
     diff = {}
 
@@ -73,9 +35,7 @@ def generate(data1, data2):
         else:
             diff[key] = {
                 'type': 'unchanged',
-                'value': data1[key],
                 'old_value': data1[key],
                 'new_value': data2[key]
             }
-
     return diff
