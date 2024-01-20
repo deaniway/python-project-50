@@ -2,6 +2,7 @@
 [![Actions Status](https://github.com/deaniway/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/deaniway/python-project-50/actions)
 [![Github CI](https://github.com/hexlet-boilerplates/python-package/workflows/Python%20CI/badge.svg)](https://github.com/deaniway/python-project-50/actions/workflows/pyci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/77d97412b5a1275a9fe6/maintainability)](https://codeclimate.com/github/deaniway/python-project-50/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/196830098d93b40c84ee/test_coverage)](https://codeclimate.com/github/deaniway/python-project-50/test_coverage)
 ### Links
 
 This project was built using these tools:
