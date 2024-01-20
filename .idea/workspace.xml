@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb26547f-4e13-4923-bab0-bc506ee71ebd" name="Changes" comment="" />
+    <list default="true" id="fb26547f-4e13-4923-bab0-bc506ee71ebd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +36,12 @@
   }
 }]]></component>
   <component name="RunManager" selected="Makefile Target.test-coverage">
+    <configuration name="check" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="check" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="install" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="install" workingDirectory="" arguments="">
         <envs />
@@ -49,6 +57,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile Target.test-coverage" />
+        <item itemvalue="Makefile Target.check" />
         <item itemvalue="Makefile Target.install" />
       </list>
     </recent_temporary>
