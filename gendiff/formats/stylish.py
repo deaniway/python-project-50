@@ -17,42 +17,46 @@ def to_str(value, spaces_count=2):
 
 
 def make_stylish_result(diff, spaces_count=2):
-    lines = []
+    def _iter(diff, spaces_count=2):
+        lines = []
 
-    for key, item in diff.items():
-        action = item['type']
-        indent = ' ' * spaces_count
+        for key, item in diff.items():
+            indent = ' ' * spaces_count
 
-        match action:
-            case "unchanged":
-                current_value = to_str(item['old_value'], spaces_count)
-                lines.append(f"{indent}  {key}: {current_value}")
+            match item['type']:
+                case "unchanged":
+                    current_value = to_str(item['old_value'], spaces_count)
+                    lines.append(f"{indent}  {key}: {current_value}")
 
-            case "modified":
-                old_value = to_str(item.get('old_value'), spaces_count)
-                new_value = to_str(item.get('new_value'), spaces_count)
-                lines.extend([
-                    f"{indent}- {key}: {old_value}",
-                    f"{indent}+ {key}: {new_value}"
-                ])
+                case "modified":
+                    old_value = to_str(item.get('old_value'), spaces_count)
+                    new_value = to_str(item.get('new_value'), spaces_count)
+                    lines.extend([
+                        f"{indent}- {key}: {old_value}",
+                        f"{indent}+ {key}: {new_value}"
+                    ])
 
-            case action if action in ["deleted", "added"]:
-                value = to_str(item.get('value'), spaces_count)
-                sign = '-' if action == "deleted" else '+'
-                lines.append(f"{indent}{sign} {key}: {value}")
+                case "deleted":
+                    value = to_str(item.get('value'), spaces_count)
+                    lines.append(f"{indent}- {key}: {value}")
 
-            case "nested":
-                try:
-                    children = make_stylish_result(
+                case "added":
+                    value = to_str(item.get('value'), spaces_count)
+                    lines.append(f"{indent}+ {key}: {value}")
+
+                case "nested":
+                    children = _iter(
                         item.get('children', {}),
                         spaces_count + 4
                     )
                     lines.append(f"{indent}  {key}: {children}")
-                except Exception as e:
-                    raise ValueError(f"Unsupported node type"
-                                     f" 'nested' at {key}: {e}")
 
-    formatted_string = '\n'.join(lines)
-    end_indent = ' ' * (spaces_count - 2)
+                case _:
+                    raise ValueError(f"Unsupported node type at {key}")
 
-    return f"{{\n{formatted_string}\n{end_indent}}}"
+        formatted_string = '\n'.join(lines)
+        end_indent = ' ' * (spaces_count - 2)
+
+        return f"{{\n{formatted_string}\n{end_indent}}}"
+
+    return _iter(diff, spaces_count)

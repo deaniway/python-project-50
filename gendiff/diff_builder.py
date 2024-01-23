@@ -1,4 +1,4 @@
-def generate(data1, data2):
+def build_diff(data1, data2):
     diff = {}
 
     keys = sorted(data1.keys() | data2.keys())
@@ -10,32 +10,32 @@ def generate(data1, data2):
         if key not in data1:
             diff[key] = {
                 'type': 'added',
-                'value': data2[key]
+                'value': value2
             }
 
         elif key not in data2:
             diff[key] = {
                 'type': 'deleted',
-                'value': data1[key]
+                'value': value1
             }
 
         elif isinstance(value1, dict) and isinstance(value2, dict):
             diff[key] = {
                 'type': 'nested',
-                'children': generate(data1[key], data2[key])
+                'children': build_diff(value1, value2)
             }
 
-        elif data1[key] != data2[key]:
+        elif value1 != value2:
             diff[key] = {
                 'type': 'modified',
-                'old_value': data1[key],
-                'new_value': data2[key]
+                'old_value': value1,
+                'new_value': value2
             }
 
         else:
             diff[key] = {
                 'type': 'unchanged',
-                'old_value': data1[key],
-                'new_value': data2[key]
+                'old_value': value1,
             }
+
     return diff

@@ -8,7 +8,7 @@ def to_str(value):
     elif isinstance(value, str):
         return f"'{value}'"
     else:
-        return str(value)
+        return value
 
 
 def make_plain_result(diff):
@@ -25,6 +25,7 @@ def make_plain_result(diff):
                     )
                 case 'deleted':
                     res.append(f"Property '{current_path}' was removed")
+
                 case 'modified':
                     new_value = to_str(data['new_value'])
                     old_value = to_str(data['old_value'])
@@ -33,13 +34,18 @@ def make_plain_result(diff):
                         f"From {old_value} to {new_value}"
                     )
                 case 'nested':
-                    try:
-                        children = data['children']
-                        res.extend(_iter(children, current_path))
-                    except Exception as e:
-                        raise ValueError(f"Unsupported node type"
-                                         f" 'nested' at {current_path}: {e}")
+                    children = data['children']
+                    res.extend(_iter(children, current_path))
+
+                case 'unchanged':
+                    pass
+
+                case _:
+                    raise ValueError(f"Unsupported node type at {current_path}")
 
         return res
 
     return '\n'.join(_iter(diff))
+# если  не прописать  unchanged и проигнорировать
+# то все впадает  сразу в исключение дефолта
+# не догадываюсь как обойти этот момент

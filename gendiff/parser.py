@@ -2,11 +2,11 @@ import yaml
 import json
 
 
-def parser_data(content, format_file):
-    match format_file:
+def parse_data(data, data_format):
+    match data_format:
         case 'json':
-            return json.loads(content)
+            return json.loads(data)
         case 'yml' | 'yaml':
-            return yaml.safe_load(content)
+            return yaml.safe_load(data)
         case _:
-            raise ValueError(f"Формат не поддерживается: {format_file}")
+            raise ValueError(f"Формат не поддерживается: {data_format}")
