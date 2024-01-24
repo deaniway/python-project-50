@@ -1,22 +1,22 @@
 def to_str(value, spaces_count=2):
     if value is None:
-        return "null"
+        return 'null'
     elif isinstance(value, bool):
         return str(value).lower()
     elif isinstance(value, dict):
-        indent = " " * (spaces_count + 4)
+        indent = ' ' * (spaces_count + 4)
         lines = []
         for key, inner_value in value.items():
             formatted_value = to_str(inner_value, spaces_count + 4)
-            lines.append(f"{indent}  {key}: {formatted_value}")
+            lines.append(f'{indent}  {key}: {formatted_value}')
         formatted_string = '\n'.join(lines)
-        end_indent = " " * (spaces_count + 2)
-        return f"{{\n{formatted_string}\n{end_indent}}}"
+        end_indent = ' ' * (spaces_count + 2)
+        return f'{{\n{formatted_string}\n{end_indent}}}'
     else:
-        return f"{value}"
+        return str(value)
 
 
-def make_stylish_result(diff, spaces_count=2):
+def make_stylish_result(diff):
     def _iter(diff, spaces_count=2):
         lines = []
 
@@ -24,39 +24,39 @@ def make_stylish_result(diff, spaces_count=2):
             indent = ' ' * spaces_count
 
             match item['type']:
-                case "unchanged":
+                case 'unchanged':
                     current_value = to_str(item['old_value'], spaces_count)
                     lines.append(f"{indent}  {key}: {current_value}")
 
-                case "modified":
+                case 'modified':
                     old_value = to_str(item.get('old_value'), spaces_count)
                     new_value = to_str(item.get('new_value'), spaces_count)
                     lines.extend([
-                        f"{indent}- {key}: {old_value}",
-                        f"{indent}+ {key}: {new_value}"
+                        f'{indent}- {key}: {old_value}',
+                        f'{indent}+ {key}: {new_value}'
                     ])
 
-                case "deleted":
+                case 'deleted':
                     value = to_str(item.get('value'), spaces_count)
-                    lines.append(f"{indent}- {key}: {value}")
+                    lines.append(f'{indent}- {key}: {value}')
 
-                case "added":
+                case 'added':
                     value = to_str(item.get('value'), spaces_count)
-                    lines.append(f"{indent}+ {key}: {value}")
+                    lines.append(f'{indent}+ {key}: {value}')
 
-                case "nested":
+                case 'nested':
                     children = _iter(
                         item.get('children', {}),
                         spaces_count + 4
                     )
-                    lines.append(f"{indent}  {key}: {children}")
+                    lines.append(f'{indent}  {key}: {children}')
 
                 case _:
-                    raise ValueError(f"Unsupported node type at {key}")
+                    raise ValueError(f'Unsupported node type at {key}')
 
         formatted_string = '\n'.join(lines)
         end_indent = ' ' * (spaces_count - 2)
 
-        return f"{{\n{formatted_string}\n{end_indent}}}"
+        return f'{{\n{formatted_string}\n{end_indent}}}'
 
-    return _iter(diff, spaces_count)
+    return _iter(diff)

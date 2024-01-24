@@ -38,14 +38,11 @@ def make_plain_result(diff):
                     res.extend(_iter(children, current_path))
 
                 case 'unchanged':
-                    pass
+                    continue
 
                 case _:
-                    raise ValueError(f"Unsupported node type at {current_path}")
+                    raise ValueError(f'Unsupported node type at {current_path}')
 
         return res
 
     return '\n'.join(_iter(diff))
-# если  не прописать  unchanged и проигнорировать
-# то все впадает  сразу в исключение дефолта
-# не догадываюсь как обойти этот момент

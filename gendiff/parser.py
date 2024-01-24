@@ -9,4 +9,4 @@ def parse_data(data, data_format):
         case 'yml' | 'yaml':
             return yaml.safe_load(data)
         case _:
-            raise ValueError(f"Формат не поддерживается: {data_format}")
+            raise ValueError(f'Формат не поддерживается: {data_format}')

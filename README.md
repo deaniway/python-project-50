@@ -3,7 +3,28 @@
 [![Github CI](https://github.com/hexlet-boilerplates/python-package/workflows/Python%20CI/badge.svg)](https://github.com/deaniway/python-project-50/actions/workflows/pyci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/77d97412b5a1275a9fe6/maintainability)](https://codeclimate.com/github/deaniway/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/196830098d93b40c84ee/test_coverage)](https://codeclimate.com/github/deaniway/python-project-50/test_coverage)
-#### Links
+
+### Usage
+```
+gendiff -h
+
+
+usage: gendiff [-h] [-f FORMAT] first_file second_file
+
+Compares two configuration files and shows a difference.
+
+positional arguments:
+  first_file
+  second_file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FORMAT, --format FORMAT
+                        set format of output
+```
+
+
+### Links
 
 This project was built using these tools:
 
@@ -13,6 +34,10 @@ This project was built using these tools:
 | [flake8](https://flake8.pycqa.org/)        | "Your tool for style guide enforcement"                                                                       |    
 | [pytest](https://docs.pytest.org/)         | "The pytest framework makes it easy to write small, readable tests"                                           |
 
+#### Minimum Requirements:
+ - [x] Python    
+ - [x] Poetry
+
 ## Project: Difference Calculator
 
 
@@ -21,7 +46,7 @@ This is a popular task, for which there are many online services, such as jsondi
 A similar mechanism is, for example, used when outputting tests or automatically tracking changes in configuration files.
 
 
-### This is games use next tools:
+### This is  use next tools:
 
 | Tools  | Version |
 |:------:|:-------:|
@@ -34,12 +59,13 @@ A similar mechanism is, for example, used when outputting tests or automatically
 
 ### To get started, you need to perform the following operations:
 
-| Step |                                                Instruction                                                 |
-|:----:|:----------------------------------------------------------------------------------------------------------:|
-|  1   |              Clone he repository to your PC:<br/>`github.com/deaniway/python-project-50.git`               |
-|  2   |                                Go to repository<br/>`cd python-project-50`                                 |
-|  3   |                              Installation game in your PC<br/>`make install`                               | 
-|  4   | Use command for install <br/>`python3 -m pip install --user git+github.com/deaniway/python-project-50.git` | 
+| Step |                                   Instruction                                   |
+|:----:|:-------------------------------------------------------------------------------:|
+|  1   | Clone he repository to your PC:<br/>`github.com/deaniway/python-project-50.git` |
+|  2   |                   Go to repository<br/>`cd python-project-50`                   |
+|  3   |         Installing the application on your computer<br/>`make install`          | 
+
+*Alternative installation option:* `python3 -m pip install --user git+github.com/deaniway/python-project-50.git`
 
 *P.S.* *You must have [Poetry](https://python-poetry.org) installed*
 
